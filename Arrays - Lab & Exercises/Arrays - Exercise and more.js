@@ -95,7 +95,6 @@ function maxNumber(inputArray) {
     }
   }
 
-  // Print the top integers found.
   console.log(topIntegers.join(" "));
 }
 
