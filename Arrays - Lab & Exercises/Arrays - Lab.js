@@ -94,7 +94,7 @@ evenAndOddSubstraction([2, 4, 6, 8, 10]);
 //7. Equal Arrays
 function equalArrays(inputArrayA, inputArrayB) {
   let sum = 0;
-  // let index = -1;
+  let index = -1;
   let areIdentical = true;
 
   for (let i = 0; i < inputArrayA.length; i++) {
@@ -115,7 +115,8 @@ function equalArrays(inputArrayA, inputArrayB) {
   }
 }
 
-equalArrays(["2", "2", "3", "4", "5"], ["1", "2", "4", "4", "5"]);
+equalArrays(["10", "20", "30"], ["10", "20", "30"]);
+equalArrays(["1", "2", "3", "4", "5"], ["1", "2", "4", "4", "5"]);
 
 //8. Condense Array To Number
 function condenseArray(inputArray) {
