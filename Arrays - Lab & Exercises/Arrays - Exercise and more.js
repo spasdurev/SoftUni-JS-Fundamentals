@@ -99,3 +99,88 @@ function maxNumber(inputArray) {
 }
 
 maxNumber([1, 4, 3, 2]);
+
+//6. Equal Sums
+function equalSums(arr) {
+  let result = "no";
+
+  for (let i = 0; i < arr.length; i++) {
+    let leftSum = 0;
+    let rightSum = 0;
+
+    for (let j = 0; j < i; j++) {
+      leftSum += arr[j];
+    }
+
+    for (let k = i + 1; k < arr.length; k++) {
+      rightSum += arr[k];
+    }
+
+    if (leftSum === rightSum) {
+      result = i;
+      break;
+    }
+  }
+  console.log(result);
+}
+equalSums([1, 2, 3, 3]);
+
+//7. Max Sequence of Equal Elements
+function maxSequenceOfEqualEl(arr) {
+  let currentSequence = [];
+  let longestSequence = [];
+  let currentElement = undefined;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === currentElement) {
+      // checking if each element in the array is equal to the current, if yes > adds it to the currentsequence array
+      currentSequence.push(arr[i]);
+    } else {
+      // if not, comparing the length of the current and longest sequences and if the current is 'longer' than the longest sequence, update the longest sequence with the current sequence and reset (add) the current sequence to the current element
+      if (currentSequence.length > longestSequence.length) {
+        longestSequence = currentSequence;
+      }
+      currentSequence = [arr[i]];
+      currentElement = arr[i];
+    }
+  }
+  console.log(longestSequence.join(" "));
+}
+maxSequenceOfEqualEl([2, 1, 1, 2, 3, 3, 2, 2, 2, 1]);
+
+//8. Magic Sum
+function magicNum(arr, num) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === num) {
+        console.log(arr[i], arr[j]);
+      }
+    }
+  }
+}
+magicNum(
+  [1, 7, 6, 2, 19, 23],
+
+  8
+);
+
+//9. *Dungeonest Dark
+//10. *Ladybugs
+
+//More exercises; 1. Print N-th element
+function printNthEle(array) {
+  const step = Number(array[array.length - 1]);
+  let result = "";
+
+  for (let i = 0; i < array.length - 1; i += step) {
+    result += array[i] + " ";
+  }
+
+  const finalSentence = result.trim();
+  console.log(finalSentence);
+}
+
+// Test the function
+printNthEle(["5", "20", "31", "4", "20", "2"]);
+
+//2. Add and Remove
