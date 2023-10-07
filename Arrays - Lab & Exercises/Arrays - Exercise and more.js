@@ -165,6 +165,43 @@ magicNum(
 );
 
 //9. *Dungeonest Dark
+function dungeonestDark(arr) {
+  let health = 100;
+  let coins = 0;
+  let roomNumber = 0;
+  let rooms = arr[0].split("|");
+
+  for (let room of rooms) {
+    roomNumber++;
+
+    let roomParts = room.split(" ");
+    let itemOrMonster = roomParts[0];
+    let number = Number(roomParts[1]);
+
+    if (itemOrMonster === "potion") {
+      let healing = Math.min(100 - health, number);
+      health += healing;
+      console.log(`You healed for ${healing} hp.`);
+      console.log(`Current health: ${health} hp.`);
+    } else if (itemOrMonster === "chest") {
+      coins += number;
+      console.log(`You found ${number} coins.`);
+    } else {
+      health -= number;
+      if (health > 0) {
+        console.log(`You slayed ${itemOrMonster}.`);
+      } else {
+        console.log(`You died! Killed by ${itemOrMonster}.`);
+        console.log(`Best room: ${roomNumber}`);
+        return;
+      }
+    }
+  }
+  console.log(`You've made it!`);
+  console.log(`Coins: ${coins}`);
+  console.log(`Health: ${health}`);
+}
+dungeonestDark(["rat 10|bat 20|potion 10|rat 10|chest 100|boss 70|chest 1000"]);
 //10. *Ladybugs
 
 //More exercises; 1. Print N-th element
@@ -180,7 +217,34 @@ function printNthEle(array) {
   console.log(finalSentence);
 }
 
-// Test the function
 printNthEle(["5", "20", "31", "4", "20", "2"]);
 
 //2. Add and Remove
+function addAndRemove(commands) {
+  const resultArray = [];
+  let currentNumber = 1;
+
+  for (let command of commands) {
+    if (command == "add") {
+      resultArray.push(currentNumber);
+    } else if (command == "remove") {
+      if (resultArray.length > 0) {
+        resultArray.pop();
+      }
+    }
+    currentNumber++;
+  }
+
+  if (resultArray.length === 0) {
+    console.log("Empty");
+  } else {
+    console.log(resultArray.join(" "));
+  }
+}
+addAndRemove(["add", "add", "add", "add"]);
+addAndRemove(["add", "add", "remove", "add", "add"]);
+addAndRemove(["remove", "remove", "remove"]);
+
+//3. Rotate Array
+function rotateArray() {}
+rotateArray(["1", "2", "3", "4", "2"]);
