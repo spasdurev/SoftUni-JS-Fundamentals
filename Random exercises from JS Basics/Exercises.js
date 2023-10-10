@@ -94,3 +94,21 @@ function reverseTwo(arr1) {
   return result;
 }
 console.log(reverseTwo([1, 2, 3, 4]));
+
+//return last element in an array
+function getLastItem(arr) {
+  // return arr.slice(-1)[0];
+  return arr[arr.length - 1];
+  // return arr[2];
+}
+
+console.log(getLastItem([1, 2, 3]));
+console.log(getLastItem([true, false, true]));
+console.log(getLastItem(["cat", "dog", "duck"]));
+
+//convert age to days
+
+function calcAge(age) {
+  return age * 365;
+}
+console.log(calcAge(65));

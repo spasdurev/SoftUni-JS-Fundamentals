@@ -246,5 +246,17 @@ addAndRemove(["add", "add", "remove", "add", "add"]);
 addAndRemove(["remove", "remove", "remove"]);
 
 //3. Rotate Array
-function rotateArray() {}
-rotateArray(["1", "2", "3", "4", "2"]);
+function rotateArray(arr) {
+  let numRotations = Number(arr[arr.length - 1]);
+  let rotatedArray = arr.slice(0, arr.length - 1);
+
+  for (let i = 0; i < numRotations; i++) {
+    let lastElement = rotatedArray.pop();
+    rotatedArray.unshift(lastElement);
+  }
+
+  return rotatedArray.join(" ");
+}
+
+console.log(rotateArray(["Banana", "Orange", "Coconut", "Apple", "15"]));
+console.log(rotateArray(["1", "2", "3", "4", "2"]));
