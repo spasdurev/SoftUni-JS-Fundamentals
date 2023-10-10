@@ -145,20 +145,16 @@ function passwordValidator(password) {
       isValid = false;
       break;
     }
-
-    // Count the digits
     if (charCode >= 48 && charCode <= 57) {
       digitCount++;
     }
   }
 
-  // Check if it has at least 2 digits
   if (digitCount < 2) {
     console.log("Password must have at least 2 digits");
     isValid = false;
   }
 
-  // If all checks passed, the password is valid
   if (isValid) {
     console.log("Password is valid");
   }
