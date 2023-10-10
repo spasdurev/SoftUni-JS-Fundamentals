@@ -1,4 +1,4 @@
-//. Smalles of Three Numbers
+//1. Smalles of Three Numbers
 
 function smallestOfThreeNumbers(num1, num2, num3) {
   // let smallestNumber = num1;
