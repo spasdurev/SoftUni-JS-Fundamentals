@@ -227,7 +227,7 @@ console.log(sortByLength(["a", "ccc", "dddd", "bb"]));
 
 function sortNumsAscending(arr) {
   if (arr == null || arr.length === 0) {
-    return [];
+    return []; //task required if the function's argument is null, an empty array, or undefined; return an empty array.
   }
   return arr.sort((a, b) => a - b);
   //When a is less than b, a - b results in a negative value, indicating that a should come before b in the sorted array.
