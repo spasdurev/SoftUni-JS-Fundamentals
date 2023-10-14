@@ -230,3 +230,52 @@ function factorialDivision(num1, num2) {
 }
 factorialDivision(5, 2);
 factorialDivision(6, 2);
+
+//More Exercise - Functions
+
+//1. Car Wash
+
+function carWash(commands) {
+  let cleanliness = 0;
+
+  for (let i = 0; i < commands.length; i++) {
+    // if (commands[i] == "soap") {
+    //   cleanliness += 10;
+    // }
+    // if (commands[i] == "water") {
+    //   cleanliness += cleanliness * 0.2;
+    // }
+    // if (commands[i] == "vacuum cleaner") {
+    //   cleanliness += cleanliness * 0.25;
+    // }
+    // if (commands[i] == "mud") {
+    //   cleanliness -= cleanliness * 0.1;
+    // }
+    switch (commands[i]) {
+      case "soap":
+        cleanliness += 10;
+        break;
+      case "water":
+        cleanliness += cleanliness * 0.2;
+        break;
+      case "vacuum cleaner":
+        cleanliness += cleanliness * 0.25;
+        break;
+      case "mud":
+        cleanliness -= cleanliness * 0.1;
+        break;
+    }
+  }
+  console.log(`The car is ${cleanliness.toFixed(2)}% clean.`);
+}
+carWash(["soap", "soap", "vacuum cleaner", "mud", "soap", "water"]);
+
+function numberModification(num) {
+  let numberString = String(num);
+  let average = 0;
+
+  while (average <= 5) {
+    let sum = 0;
+  }
+}
+numberModification(101);

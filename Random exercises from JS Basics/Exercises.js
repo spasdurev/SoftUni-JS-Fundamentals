@@ -112,3 +112,128 @@ function calcAge(age) {
   return age * 365;
 }
 console.log(calcAge(65));
+
+//testing array includes/indexOf/
+
+//check if the element is included in arr
+let arr = [10, 20, 30, 40, 50];
+
+function includes(inputArr, element) {
+  for (let item of inputArr) {
+    if (item === element) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// indexOf - where the element is located, at which index
+function indexOf(inputArr, element) {
+  for (let i = 0; i < inputArr.length; i++) {
+    if (inputArr[i] === element) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+console.log(indexOf(arr, 20));
+
+//slice - returns a copy of the array input into a new array object
+function slice(inputArr, start, end) {
+  let result = [];
+
+  for (let i = start; i < end; i++) {
+    result.push(inputArr[i]);
+  }
+  return result;
+}
+console.log(slice(arr, 1, 3));
+
+//join
+function join(inputArr, str) {
+  let result = "";
+
+  for (let i = 0; i < inputArr.length - 1; i++) {
+    result += String(inputArr[i]);
+    result += str;
+  }
+
+  if (inputArr.length > 0) {
+    result += inputArr[inputArr.length - 1];
+  }
+  return result;
+}
+console.log(join(arr, "--"));
+
+//filter out strings from an array
+function filterArray(arr) {
+  let filteredArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== "string") {
+      filteredArray.push(arr[i]);
+    }
+  }
+  console.log(filteredArray);
+}
+filterArray([1, 2, "a", "b"]);
+filterArray([1, "a", "b", 0, 15]);
+filterArray([1, 2, "aasf", "1", "123", 123]);
+
+//Array of multiples //return
+function arrayOfMultiples(num, length) {
+  let multiplesArray = [];
+
+  for (let i = 1; i <= length; i++) {
+    multiplesArray.push(num * i);
+  }
+  console.log(multiplesArray);
+}
+arrayOfMultiples(7, 5);
+
+//find the smallest and biggest numbers:
+function minMax(arr) {
+  if (arr.length === 0) {
+    return [];
+  }
+
+  let min = arr[0];
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min[0]) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+  return [min, max];
+}
+minMax([1, 2, 3, 4, 5]);
+
+//sort by string length
+function sortByLength(arr) {
+  let sortedInAscending = arr.sort((a, b) => {
+    return a.length - b.length;
+  });
+  return sortedInAscending;
+}
+
+console.log(sortByLength(["a", "ccc", "dddd", "bb"]));
+
+//Sort Numbers in Ascending Order
+
+function sortNumsAscending(arr) {
+  if (arr == null || arr.length === 0) {
+    return [];
+  }
+  return arr.sort((a, b) => a - b);
+  //When a is less than b, a - b results in a negative value, indicating that a should come before b in the sorted array.
+
+  // When a is greater than b, a - b results in a positive value, indicating that a should come after b in the sorted array.
+
+  // When a is equal to b, a - b results in 0, meaning that the order of a and b remains unchanged because they are equal.
+}
+console.log(sortNumsAscending([1, 2, 10, 50, 5]));
