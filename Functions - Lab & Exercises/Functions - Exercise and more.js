@@ -270,12 +270,181 @@ function carWash(commands) {
 }
 carWash(["soap", "soap", "vacuum cleaner", "mud", "soap", "water"]);
 
-function numberModification(num) {
-  let numberString = String(num);
-  let average = 0;
+//2. Number Modification
+function modificateNumber(number) {
+  let num = number.toString();
+  let sum = 0;
 
-  while (average <= 5) {
-    let sum = 0;
+  const append = (n) => (num += n);
+
+  while (sum / num.length <= 5) {
+    for (let i = 0; i < num.length; i++) {
+      let n = Number(num[i]);
+      sum += n;
+    }
+
+    if (sum / num.length <= 5) {
+      append(9);
+      sum = 0;
+    }
+  }
+
+  console.log(num);
+}
+modificateNumber(101);
+
+//3. Points Validation
+
+function isValidDistance(points) {
+  for (let i = 0; i < 3; i++) {
+    let x1, y1, x2, y2;
+    if (i === 0) {
+      x1 = points[0];
+      y1 = points[1];
+      x2 = 0;
+      y2 = 0;
+    } else if (i === 1) {
+      x1 = points[2];
+      y1 = points[3];
+      x2 = 0;
+      y2 = 0;
+    } else {
+      x1 = points[0];
+      y1 = points[1];
+      x2 = points[2];
+      y2 = points[3];
+    }
+    let distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    if (distance % 1 === 0) {
+      console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is valid`);
+    } else {
+      console.log(`{${x1}, ${y1}} to {${x2}, ${y2}} is invalid`);
+    }
   }
 }
-numberModification(101);
+
+isValidDistance([3, 0, 0, 4]);
+isValidDistance([2, 1, 1, 1]);
+
+//4. Radio Crystals
+function radioCrystals(array) {
+  let finalThickness = Number(array[0]);
+
+  let cutCounter = 0;
+  let cutOperation = false;
+  let lapCounter = 0;
+  let lapOperation = false;
+  let grindCounter = 0;
+  let grindOperation = false;
+  let etchCounter = 0;
+  let etchOperation = false;
+  let xRayCounter = 0;
+  let xRayWasUsed = false;
+
+  for (let index = 1; index < Number(array.length); index++) {
+    let currentCrystalThickness = Number(array[index]);
+    console.log(`Processing chunk ${currentCrystalThickness} microns`);
+
+    while (currentCrystalThickness / 4 >= finalThickness) {
+      // Cut operation
+      currentCrystalThickness = currentCrystalThickness / 4;
+      cutCounter++;
+      cutOperation = true;
+    }
+    if (cutOperation === true) {
+      console.log(`Cut x${cutCounter}`);
+      console.log("Transporting and washing");
+      currentCrystalThickness = Math.floor(currentCrystalThickness);
+    }
+
+    while (
+      currentCrystalThickness - (currentCrystalThickness / 100) * 20 >=
+      finalThickness
+    ) {
+      // Lap operation
+      currentCrystalThickness =
+        currentCrystalThickness - (currentCrystalThickness / 100) * 20;
+      lapCounter++;
+      lapOperation = true;
+    }
+    if (lapOperation === true) {
+      console.log(`Lap x${lapCounter}`);
+      console.log("Transporting and washing");
+      currentCrystalThickness = Math.floor(currentCrystalThickness);
+    }
+
+    while (currentCrystalThickness - 20 >= finalThickness) {
+      // Grind operation
+      currentCrystalThickness -= 20;
+      grindCounter++;
+      grindOperation = true;
+    }
+    if (grindOperation === true) {
+      console.log(`Grind x${grindCounter}`);
+      console.log("Transporting and washing");
+      currentCrystalThickness = Math.floor(currentCrystalThickness);
+    }
+
+    while (currentCrystalThickness - 2 >= finalThickness - 1) {
+      // Etch operation
+      currentCrystalThickness -= 2;
+      etchCounter++;
+      etchOperation = true;
+    }
+    if (etchOperation === true) {
+      console.log(`Etch x${etchCounter}`);
+      console.log("Transporting and washing");
+      currentCrystalThickness = Math.floor(currentCrystalThickness);
+    }
+
+    if (currentCrystalThickness < finalThickness) {
+      xRayWasUsed = true;
+      xRayCounter++;
+    }
+    if (xRayWasUsed === true && xRayCounter === 1) {
+      // X-ray operation
+      currentCrystalThickness++;
+      console.log(`X-ray x${xRayCounter}`);
+    }
+
+    if (currentCrystalThickness === finalThickness) {
+      console.log(`Finished crystal ${currentCrystalThickness} microns`);
+      cutCounter = 0;
+      cutOperation = false;
+      lapCounter = 0;
+      lapOperation = false;
+      grindCounter = 0;
+      grindOperation = false;
+      etchCounter = 0;
+      etchOperation = false;
+      xRayCounter = 0;
+      xRayWasUsed = false;
+    }
+  }
+}
+radioCrystals([1375, 50000]);
+
+//5. Print DNA
+function dnaHelix(number) {
+  let sequence = "ATCGTTAGGG";
+  let counter = 0;
+  for (let i = 0; i < number; i++) {
+    let firstSymbol = sequence[counter % 10];
+    let secondSymbol = sequence[(counter + 1) % 10];
+    let row = "";
+
+    if (i % 4 === 0) {
+      row = `**${firstSymbol}${secondSymbol}**`;
+    } else if (i % 4 === 1) {
+      row = ` *${firstSymbol}--${secondSymbol}* `;
+    } else if (i % 4 === 2) {
+      row = `  ${firstSymbol}----${secondSymbol}`;
+    } else if (i % 4 === 3) {
+      row = ` *${firstSymbol}--${secondSymbol}* `;
+    }
+
+    console.log(row);
+    counter += 2;
+  }
+}
+dnaHelix(4);
