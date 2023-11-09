@@ -237,3 +237,17 @@ function sortNumsAscending(arr) {
   // When a is equal to b, a - b results in 0, meaning that the order of a and b remains unchanged because they are equal.
 }
 console.log(sortNumsAscending([1, 2, 10, 50, 5]));
+
+//
+let myAssocArray = {
+  "Spas Durev": "+35912345679",
+};
+console.log(myAssocArray);
+
+for (let [contactName, phoneNumber] of Object.entries(myAssocArray)) {
+  console.log(contactName, "->", phoneNumber);
+}
+
+for (let key in myAssocArray) {
+  console.log(key, "->", myAssocArray[key]);
+}
