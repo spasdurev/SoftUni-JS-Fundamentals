@@ -251,3 +251,14 @@ for (let [contactName, phoneNumber] of Object.entries(myAssocArray)) {
 for (let key in myAssocArray) {
   console.log(key, "->", myAssocArray[key]);
 }
+const object1 = {
+  a: "somestring",
+  b: 42,
+};
+
+for (const [key, value] of Object.entries(object1)) {
+  console.log(`${key}: ${value}`);
+}
+
+const obj = { foo: "bar", baz: 42 };
+console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
